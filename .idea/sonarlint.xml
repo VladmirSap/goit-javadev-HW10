@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SonarLintProjectSettings">
+    <option name="moduleMapping">
+      <map>
+        <entry key="goit-javadev-hw10.main" value="goit-javadev-HW10.main" />
+        <entry key="goit-javadev-hw10.test" value="goit-javadev-HW10.test" />
+      </map>
+    </option>
+  </component>
+</project>

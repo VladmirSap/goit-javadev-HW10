@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.juni9.1t:junit-bom:5.')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // Lombok для компіляції
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core
+    implementation 'org.apache.tomcat.embed:tomcat-embed-core:11.0.0'
+    // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:11.0.0'
+    // https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf
+    implementation 'org.thymeleaf:thymeleaf:3.1.2.RELEASE'
+
+    // https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+    providedCompile 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+    implementation 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+
+
+    // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+
+
+}
+
+war {
+    archiveBaseName = 'TimeApp'
+    archiveVersion = '1.0'
+}
+
+test {
+    useJUnitPlatform()
+}
