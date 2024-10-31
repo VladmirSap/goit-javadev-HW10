@@ -20,11 +20,9 @@ public class TimeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        // Отримання параметра timezone з запиту
         String timezoneParam = request.getParameter("timezone");
         ZoneId zoneId;
 
-        // Встановлення таймзони або за замовчуванням UTC
         if (timezoneParam == null || timezoneParam.isEmpty()) {
             zoneId = ZoneId.of("UTC");
         } else {
@@ -35,13 +33,11 @@ public class TimeServlet extends HttpServlet {
             }
         }
 
-        // Отримання поточного часу в обраному часовому поясі
         Instant now = Instant.now();
         String formattedTime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z")
                 .withZone(zoneId)
                 .format(now);
 
-        // Генерація HTML-сторінки
         try (PrintWriter out = response.getWriter()) {
             out.println("<html>");
             out.println("<head><title>Current Time</title></head>");

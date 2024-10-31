@@ -17,7 +17,7 @@ public class TimezoneValidateFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        // Ініціалізація фільтра, якщо потрібно
+
     }
 
     @Override
@@ -28,12 +28,12 @@ public class TimezoneValidateFilter implements Filter {
 
         String timezoneParam = request.getParameter("timezone");
 
-        // Перевірка наявності параметра timezone
+
         if (timezoneParam != null && !timezoneParam.isEmpty()) {
-            // Валідація таймзони
+
             TimeZone timeZone = TimeZone.getTimeZone(timezoneParam);
             if ("GMT".equals(timeZone.getID()) && !timezoneParam.equals("GMT")) {
-                // Якщо таймзона некоректна, повертаємо 400
+
                 httpResponse.setContentType("text/html;charset=UTF-8");
                 httpResponse.getWriter().println("<html><body><h1>Invalid timezone</h1></body></html>");
                 httpResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST); // Використання статуса 400
@@ -41,12 +41,12 @@ public class TimezoneValidateFilter implements Filter {
             }
         }
 
-        // Якщо таймзона коректна, продовжуємо обробку запиту
+
         chain.doFilter(request, response);
     }
 
     @Override
     public void destroy() {
-        // Очистка ресурсів, якщо потрібно
+
     }
 }
